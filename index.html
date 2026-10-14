@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Baby ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: linear-gradient(135deg, #200016, #57002f, #19001e);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      color: #ff8eb9;
+      opacity: 0.65;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 0.7; }
+      to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      padding: 45px 20px 55px;
+    }
+
+    .moon {
+      font-size: 48px;
+      margin-bottom: 18px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff8eb9; }
+      to { text-shadow: 0 0 30px #ff4d94; }
+    }
+
+    h1 {
+      font-size: clamp(35px, 8vw, 58px);
+      color: #ffb6d2;
+      margin-bottom: 15px;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #ffe3ee;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 182, 210, 0.35);
+      border-radius: 22px;
+      padding: 27px 22px;
+      margin: 22px 0;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
+    h2 {
+      color: #ffb6d2;
+      margin-bottom: 16px;
+      font-size: 25px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #fff0f6;
+    }
+
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 15px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 9px 5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(255, 105, 165, 0.3);
+    }
+
+    .pink-button {
+      background: #ff8eb9;
+      color: #35001d;
+    }
+
+    .outline-button {
+      background: transparent;
+      color: white;
+      border: 1px solid #ffb6d2;
+    }
+
+    #secretMessage {
+      display: none;
+      margin-top: 22px;
+      color: #ffd1e3;
+      animation: appear 0.7s ease;
+    }
+
+    #voiceStatus {
+      font-size: 14px;
+      color: #ffb6d2;
+      margin-top: 12px;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .quote {
+      font-style: italic;
+      color: #ffd1e3;
+      font-size: 19px;
+    }
+
+    footer {
+      padding: 25px 10px 5px;
+      color: #eab0c8;
+      font-size: 14px;
+    }
+
+    .signature {
+      font-size: 23px;
+      color: #ffb6d2;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <main class="container">
+
+    <div class="moon">🌙</div>
+
+    <h1>For My Baby ❤️</h1>
+
+    <p class="subtitle">
+      A little corner of the universe,<br>
+      made just for you. 💗
+    </p>
+
+    <div class="card">
+      <h2>Hey, beautiful. 🥹</h2>
+
+      <p>
+        If you're reading this, I want you to take a little
+        moment for yourself. Forget the noise around you,
+        take a deep breath, and remember that somewhere
+        in this big world, there's someone who is genuinely
+        happy that you exist.
+      </p>
+
+      <p style="margin-top: 15px;">
+        And yes, baby... that someone is me. 😂❤️
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🎧 A little message from me</h2>
+
+      <p>
+        Reading my words is one thing,
+        but hearing my voice is something else.
+        Tap below when you're ready, baby. ❤️
+      </p>
+
+      <!--
+        IMPORTANT:
+        Upload your recorded voice file to this repository.
+        If the file is named voice.aac, keep the filename below.
+      -->
+
+      <audio id="myVoice" controls preload="metadata">
+        <source src="voice.aac" type="audio/aac">
+        Your browser does not support this audio player.
+      </audio>
+
+      <p id="voiceStatus">
+        🎙️ Your personal voice message is waiting here.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>💌 Something I want you to know</h2>
+
+      <p>
+        I may not always have the perfect words.
+        Sometimes I might not know how to explain everything
+        I feel, but that doesn't mean the little things don't
+        matter to me.
+      </p>
+
+      <p style="margin-top: 15px;">
+        Your smile, your presence, our conversations,
+        the random moments, and even the little things
+        you probably don't think twice about...
+        they mean more than you know.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🤫 A little secret...</h2>
+
+      <p>
+        There's something waiting for you below.
+        No pressure, just a little surprise from me. ❤️
+      </p>
+
+      <button class="pink-button" onclick="revealSecret()">
+        Open your little surprise 💝
+      </button>
+
+      <div id="secretMessage">
+        <p class="quote">
+          "Out of all the people in this world,
+          I'm glad our paths crossed.
+          And if I could give you one thing,
+          it would be the ability to see yourself
+          through my eyes, even for a moment.
+          Then you'd understand why you're so special to me." ❤️
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>One last thing, baby. 🌹</h2>
+
+      <p>
+        Wherever life takes us, I hope you never forget
+        that you deserve kindness, happiness, laughter,
+        and a love that makes you feel appreciated.
+      </p>
+
+      <p style="margin-top: 15px;">
+        Keep smiling, keep being you,
+        and never underestimate how beautiful
+        your presence can make someone's world.
+      </p>
+
+      <div class="signature">
+        Made with love, just for you. ❤️
+      </div>
+    </div>
+
+    <button class="outline-button" onclick="sendLove()">
+      Send some love back 💋
+    </button>
+
+    <p id="loveResponse" style="margin-top: 15px;"></p>
+
+    <footer>
+      A little website. A little voice. A whole lot of love. ❤️
+      <br><br>
+      Always remember you're special. 🌙
+    </footer>
+
+  </main>
+
+  <script>
+    // Floating hearts in the background
+    const stars = document.getElementById("stars");
+
+    for (let i = 0; i < 24; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = ["♥", "♡", "❤", "💕"][
+        Math.floor(Math.random() * 4)
+      ];
+
+      heart.style.left = Math.random() * 100 + "%";
+      heart.style.fontSize = (14 + Math.random() * 22) + "px";
+      heart.style.animationDuration = (8 + Math.random() * 12) + "s";
+      heart.style.animationDelay = (Math.random() * 12) + "s";
+
+      stars.appendChild(heart);
+    }
+
+    // Reveal the hidden love message
+    function revealSecret() {
+      const message = document.getElementById("secretMessage");
+
+      message.style.display = "block";
+
+      message.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+
+    // A little response when she taps the love button
+    function sendLove() {
+      const response = document.getElementById("loveResponse");
+
+      response.textContent =
+        "Ayyyy, come here, you! 🥹❤️ Sending you the biggest hug and a thousand kisses. 💋💕";
+
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.textContent = "❤️";
+        heart.style.left = (20 + Math.random() * 60) + "%";
+        heart.style.animationDuration = "4s";
+        stars.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+      }
+    }
+
+    // Give a clear message if the voice file is missing
+    const audio = document.getElementById("myVoice");
+    const voiceStatus = document.getElementById("voiceStatus");
+
+    audio.addEventListener("error", function () {
+      voiceStatus.textContent =
+        "Your voice recording still needs to be uploaded to the website. ❤️";
+    });
+
+    audio.addEventListener("canplay", function () {
+      voiceStatus.textContent =
+        "Your voice message is ready, baby. Press play. 🎙️❤️";
+    });
+  </script>
+
+</body>
+  </html>
